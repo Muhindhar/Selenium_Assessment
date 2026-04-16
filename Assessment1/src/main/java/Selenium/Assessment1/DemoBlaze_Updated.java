@@ -27,10 +27,8 @@ public class DemoBlaze_Updated {
 
         WebElement login =   driver.findElement(By.id("login2"));
         login.click();
-
         WebElement uname = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginusername")));
         uname.sendKeys("admin");
-        
         WebElement ps = driver.findElement(By.id("loginpassword"));
         ps.sendKeys("admin");
         WebElement btn =driver.findElement(By.xpath("//button[text()='Log in']"));
@@ -38,7 +36,6 @@ public class DemoBlaze_Updated {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
         System.out.println("Logged in successfully");
-
         WebElement laptops = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Laptops")));
         laptops.click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
@@ -56,14 +53,13 @@ public class DemoBlaze_Updated {
         for (String name : sortedProducts) {
             System.out.println(name);
         }
-        
         WebElement mac = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("MacBook Pro")));
         
         Actions act = new Actions(driver);
         act.moveToElement(mac).perform();
         
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",mac);
+        js.executeScript("window.scrollBy(0,500)");
         System.out.println("Laptop : "+mac.getText());
         mac.click();
         
