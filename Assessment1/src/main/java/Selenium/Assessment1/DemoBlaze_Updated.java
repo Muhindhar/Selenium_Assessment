@@ -34,8 +34,14 @@ public class DemoBlaze_Updated {
         WebElement btn =driver.findElement(By.xpath("//button[text()='Log in']"));
         btn.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
-        System.out.println("Logged in successfully");
+        WebElement check = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
+        if(check.isDisplayed()) {
+        	 System.out.println("Logged in successfully");
+        }
+        else {
+        	 System.out.println("Login failed");
+        }
+        
         WebElement laptops = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Laptops")));
         laptops.click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
