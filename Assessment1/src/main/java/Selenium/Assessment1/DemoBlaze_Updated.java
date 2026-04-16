@@ -25,16 +25,22 @@ public class DemoBlaze_Updated {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        driver.findElement(By.id("login2")).click();
+        WebElement login =   driver.findElement(By.id("login2"));
+        login.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginusername"))).sendKeys("admin");
-        driver.findElement(By.id("loginpassword")).sendKeys("admin");
-        driver.findElement(By.xpath("//button[text()='Log in']")).click();
+        WebElement uname = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginusername")));
+        uname.sendKeys("admin");
+        
+        WebElement ps = driver.findElement(By.id("loginpassword"));
+        ps.sendKeys("admin");
+        WebElement btn =driver.findElement(By.xpath("//button[text()='Log in']"));
+        btn.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
         System.out.println("Logged in successfully");
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Laptops"))).click();
+        WebElement laptops = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Laptops")));
+        laptops.click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
                 By.xpath("//a[normalize-space()='MacBook Pro']")));
 
